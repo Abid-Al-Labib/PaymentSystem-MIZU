@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="256.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Controller">
+   <children>
+      <Button layoutX="492.0" layoutY="199.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="61.0" text="Cancel" />
+      <Button layoutX="396.0" layoutY="199.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="68.0" text="Confirm" />
+      <Label layoutX="50.0" layoutY="64.0" prefHeight="24.0" prefWidth="85.0" text="Full name:" />
+      <Label layoutX="50.0" layoutY="109.0" text="Phone No:" />
+      <TextField layoutX="120.0" layoutY="55.0" prefHeight="34.0" prefWidth="269.0" promptText="Enter Name" />
+      <TextField layoutX="120.0" layoutY="101.0" prefHeight="34.0" prefWidth="270.0" promptText="Enter Phone number" />
+   </children>
+</AnchorPane>

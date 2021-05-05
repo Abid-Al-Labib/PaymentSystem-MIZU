@@ -26,10 +26,12 @@ public class DatabaseInit {
         String url = "jdbc:sqlite:E:/ProjectMIZU/databaseTrial/databaseTrial";
 
         String workerTable = "CREATE TABLE IF NOT EXISTS workers(\n" +
-                "  workerId INTEGER PRIMARY KEY,\n" +
-                "  name TEXT NOT NULL," +
-                "  phoneNo TEXT,\n" +
-                "  submissionNo TEXT\n" +
+                "   workerId INTEGER PRIMARY KEY,\n" +
+                "   name TEXT NOT NULL,\n" +
+                "   phoneNo TEXT,\n" +
+                "   address TEXT,\n"+
+                "   nid  INT,\n"+
+                "   submissionNo TEXT\n" +
                 ");";
 
         String productTable = "CREATE TABLE IF NOT EXISTS products(\n" +

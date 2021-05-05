@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="fxml.Controller"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="340.0" prefWidth="312.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Controller">
+   <children>
+      <Button layoutX="134.0" layoutY="300.0" mnemonicParsing="false" text="Done" />
+      <Label layoutX="34.0" layoutY="48.0" text="Employee Name:" />
+      <Label layoutX="34.0" layoutY="84.0" text="Number of Submissions:" />
+      <Label layoutX="132.0" layoutY="48.0" text="Label" />
+      <Label layoutX="173.0" layoutY="84.0" text="Label" />
+      <TextArea layoutX="24.0" layoutY="116.0" prefHeight="170.0" prefWidth="272.0" />
+      <ScrollBar layoutX="282.0" layoutY="116.0" orientation="VERTICAL" prefHeight="170.0" prefWidth="14.0" />
+   </children>
 </AnchorPane>

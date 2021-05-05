@@ -1,14 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="fxml.Controller"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="437.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Controller">
+   <children>
+      <Label layoutX="50.0" layoutY="133.0" text="Employee ID:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="90.0" text="Full Name:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="177.0" text="Phone Number:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="219.0" text="Current Submissions: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="134.0" layoutY="91.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="148.0" layoutY="133.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="170.0" layoutY="179.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="198.0" layoutY="221.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="50.0" layoutY="261.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="New Submission" />
+      <Button layoutX="50.0" layoutY="304.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Make Payment" />
+      <Button layoutX="50.0" layoutY="346.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Payment Report" />
+      <Button layoutX="234.0" layoutY="381.0" mnemonicParsing="false" text="Done" />
+      <Label layoutX="184.0" layoutY="28.0" text=" Employee Profile " underline="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="257.0" layoutY="216.0" mnemonicParsing="false" text="View " />
+   </children>
 </AnchorPane>

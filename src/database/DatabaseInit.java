@@ -30,8 +30,8 @@ public class DatabaseInit {
                 "   name TEXT NOT NULL,\n" +
                 "   phoneNo TEXT,\n" +
                 "   address TEXT,\n"+
-                "   nid  INT,\n"+
-                "   submissionNo TEXT\n" +
+                "   nid  INT ,\n"+
+                "   submissionNo INT NOT NULL\n" +
                 ");";
 
         String productTable = "CREATE TABLE IF NOT EXISTS products(\n" +
@@ -47,9 +47,9 @@ public class DatabaseInit {
         String submissionTable = "CREATE TABLE IF NOT EXISTS submissions(\n" +
                 "   submissionID INTEGER PRIMARY KEY,\n" +
                 "   submitTime TEXT NOT NULL,\n" +
-                "   workerID INTEGER NOT NULL,\n" +
-                "   productID INTEGER NOT NULL,\n" +
-                "   productNo INTEGER,\n" +
+                "   workerID INT NOT NULL,\n" +
+                "   productID INT NOT NULL,\n" +
+                "   productNo INT,\n" +
                 "   paid TEXT,\n" +
                 "   FOREIGN KEY (workerID)\n"+
                 "       REFERENCES workers(workerID)\n"+
@@ -60,9 +60,9 @@ public class DatabaseInit {
         String paymentTable = "CREATE TABLE IF NOT EXISTS payments(\n" +
                 "paymentID INTEGER PRIMARY KEY,\n" +
                 "timestamp TEXT NOT NULL,\n" +
-                "workerID INTEGER NOT NULL,\n" +
+                "workerID INT NOT NULL,\n" +
                 "submissionList TEXT NOT NULL,\n" +
-                "totalSubmissions INTEGER NOT NULL,\n" +
+                "totalSubmissions INT NOT NULL,\n" +
                 "amountPaid REAL NOT NULL,\n" +
                 "FOREIGN KEY (workerID)\n" +
                 "   REFERENCES workers(workerID)\n" +

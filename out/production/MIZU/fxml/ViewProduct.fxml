@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="327.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Controller">
+   <children>
+      <Label layoutX="38.0" layoutY="27.0" text="Search product:" />
+      <TextField layoutX="138.0" layoutY="23.0" prefHeight="18.0" prefWidth="382.0" promptText="Search by name" />
+      <TextField layoutX="564.0" layoutY="23.0" promptText="Search by ID" />
+      <TableView layoutX="26.0" layoutY="70.0" prefHeight="200.0" prefWidth="782.0">
+        <columns>
+          <TableColumn prefWidth="125.60000991821289" text="Name" />
+          <TableColumn prefWidth="90.39999389648438" text="ID" />
+            <TableColumn prefWidth="72.00006103515625" text="Rate" />
+            <TableColumn prefWidth="84.00006103515625" text="Color" />
+            <TableColumn minWidth="0.0" prefWidth="0.0" text="Rattler" />
+            <TableColumn prefWidth="40.7999267578125" text="Size" />
+            <TableColumn prefWidth="144.00006103515625" text="Rattler" />
+            <TableColumn prefWidth="222.39999999999998" text="Notes" />
+        </columns>
+      </TableView>
+      <Button layoutX="749.0" layoutY="286.0" mnemonicParsing="false" text="Done" />
+   </children>
+</AnchorPane>

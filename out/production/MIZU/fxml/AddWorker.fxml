@@ -5,13 +5,17 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="220.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Controller">
+<AnchorPane prefHeight="313.0" prefWidth="421.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Controller">
    <children>
-      <Button layoutX="328.0" layoutY="164.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="61.0" text="Cancel" />
-      <Button layoutX="248.0" layoutY="163.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="68.0" text="Confirm" />
+      <Button layoutX="331.0" layoutY="263.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="61.0" text="Cancel" />
+      <Button layoutX="246.0" layoutY="263.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="68.0" text="Confirm" />
       <Label layoutX="35.0" layoutY="60.0" prefHeight="24.0" prefWidth="85.0" text="Full name:" />
       <Label layoutX="35.0" layoutY="109.0" text="Phone No:" />
       <TextField layoutX="102.0" layoutY="55.0" prefHeight="34.0" prefWidth="269.0" promptText="Enter Name" />
       <TextField layoutX="101.0" layoutY="100.0" prefHeight="34.0" prefWidth="270.0" promptText="Enter Phone number" />
+      <Label layoutX="35.0" layoutY="155.0" text="Address:" />
+      <Label layoutX="35.0" layoutY="203.0" text="NID:" />
+      <TextField layoutX="102.0" layoutY="147.0" prefHeight="34.0" prefWidth="270.0" promptText="Enter address" />
+      <TextField layoutX="101.0" layoutY="194.0" prefHeight="34.0" prefWidth="270.0" promptText="Enter national ID number" />
    </children>
 </AnchorPane>

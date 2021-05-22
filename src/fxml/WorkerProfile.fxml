@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="437.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Controller">
+<AnchorPane prefHeight="437.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.MainController">
    <children>
       <Label layoutX="50.0" layoutY="133.0" text="Employee ID:">
          <font>

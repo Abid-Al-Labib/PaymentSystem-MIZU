@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="409.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Controller">
+<AnchorPane prefHeight="409.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.MainController">
    <children>
       <Button layoutX="301.0" layoutY="370.0" mnemonicParsing="false" text="Confirm" />
       <Button layoutX="376.0" layoutY="370.0" mnemonicParsing="false" text="Cancel" />

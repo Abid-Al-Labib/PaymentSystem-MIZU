@@ -1,5 +1,10 @@
 package database;
 
+import Service.Employee;
+import Service.Payment;
+import Service.Product;
+import Service.Submission;
+
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,7 +36,7 @@ public class DatabaseQueries {
 
 
 
-    public void addEmployee(String name, String phoneNo, String address, int nid, int submissionNo)
+    public String addEmployee(String name, String phoneNo, String address, int nid, int submissionNo)
     {
         String sql = "INSERT INTO workers(name,phoneNo,address,nid,submissionNo) VALUES(?,?,?,?,?)";
 
@@ -45,16 +50,17 @@ public class DatabaseQueries {
             ps.setInt(4,nid);
             ps.setInt(5,submissionNo);
 
-            System.out.println(ps.toString());
-
+            //String result = ps.toString();
             ps.executeUpdate();
 
+            return "Successful Insert";
+
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            return e.getMessage();
         }
     }
 
-    public void addProduct(String name, double rate, String color, String size, String rattler, String notes){
+    public String addProduct(String name, double rate, String color, String size, String rattler, String notes){
         String sql = "INSERT INTO products(name,rate,color,size,rattler,notes) VALUES(?,?,?,?,?,?)";
 
 
@@ -68,20 +74,22 @@ public class DatabaseQueries {
             ps.setString(5,rattler);
             ps.setString(6,notes);
 
-            System.out.println(ps.toString());
+            //String result = ps.toString();
 
             ps.executeUpdate();
 
+            return "Successful Insert";
+
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            return e.getMessage();
         }
     }
 
 
-    public void addSubmission(int workerID, int productID, int productNo, String paid){
+    public String addSubmission(int workerID, int productID, int productNo, String paid){
         String sql = "INSERT INTO submissions(submitTime,workerID,productID,productNo,paid) VALUES(?,?,?,?,?)";
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String ts = sdf.format(timestamp);
 
@@ -94,21 +102,21 @@ public class DatabaseQueries {
             ps.setInt(4,productNo);
             ps.setString(5,paid);
 
-
-            System.out.println(ps.toString());
-
+            //String result = ps.toString();
             ps.executeUpdate();
 
+            return "Successful Insert";
+
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            return e.getMessage();
         }
     }
 
 
-    public void addPayment(int workerID, String submissionList, int totalSubmissions, double amountPaid){
+    public String addPayment(int workerID, String submissionList, int totalSubmissions, double amountPaid){
         String sql = "INSERT INTO payments(timestamp,workerID,submissionList,totalSubmissions,amountPaid) VALUES(?,?,?,?,?)";
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String ts = sdf.format(timestamp);
 
@@ -121,18 +129,19 @@ public class DatabaseQueries {
             ps.setInt(4,totalSubmissions);
             ps.setDouble(5,amountPaid);
 
-
-            System.out.println(ps.toString());
-
+            //String result = ps.toString();
             ps.executeUpdate();
 
+            return "Successful Insert";
+
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            return e.getMessage();
         }
     }
 
-    public void selectAllEmployees(){
+    public List<Employee> selectAllEmployees(){
         String sql = "SELECT * FROM workers";
+        List<Employee> employeeList = new ArrayList<Employee>();
 
         try (   Connection connection = connect();
                 PreparedStatement ps = connection.prepareStatement(sql)){
@@ -140,17 +149,23 @@ public class DatabaseQueries {
             ResultSet rs = ps.executeQuery();
 
 
+
             while(rs.next())
             {
-                System.out.println(
-                                    rs.getInt("workerID")+ "\t" +
-                                    rs.getString("name")+ "\t" +
-                                    rs.getString("phoneNo")+ "\t" +
-                                    rs.getString("address")+ "\t" +
-                                    rs.getInt("nid")+ "\t" +
-                                    rs.getInt("submissionNo")
-                                  );
+
+                int id = rs.getInt("workerID");
+                String name = rs.getString("name");
+                String phone = rs.getString("phoneNo");
+                String address = rs.getString("address");
+                int nid = rs.getInt("nid");
+                int submissionNo = rs.getInt("submissionNo");
+
+
+                Employee aEmployee = new Employee(id,name,phone,address,nid,submissionNo);
+                employeeList.add(aEmployee);
+
             }
+
 
 
         }
@@ -159,12 +174,14 @@ public class DatabaseQueries {
             System.out.println(e.getMessage());
         }
 
-
+        return employeeList;
 
     }
 
-    public void selectAllProducts(){
+    public List<Product> selectAllProducts(){
         String sql = "SELECT * FROM products";
+
+        List<Product> productList = new ArrayList<Product>();
 
         try(    Connection connection = connect();
                 PreparedStatement ps = connection.prepareStatement(sql))
@@ -174,15 +191,16 @@ public class DatabaseQueries {
 
             while(rs.next())
             {
-                System.out.println(
-                                    rs.getInt("productID") + "\t" +
-                                    rs.getString("name") + "\t" +
-                                    rs.getDouble("rate")+ "\t" +
-                                    rs.getString("color")+ "\t" +
-                                    rs.getString("size")+ "\t" +
-                                    rs.getString("rattler")+ "\t" +
-                                    rs.getString("notes")
-                                  );
+                int id = rs.getInt("productID");
+                String name = rs.getString("name");
+                double rate = rs.getDouble("rate");
+                String color = rs.getString("color");
+                String size = rs.getString("size");
+                String rattler = rs.getString("rattler");
+                String notes = rs.getString("notes");
+
+                Product product = new Product(id,name,rate,color,size,rattler,notes);
+                productList.add(product);
 
             }
 
@@ -191,6 +209,8 @@ public class DatabaseQueries {
         {
             System.out.println(e.getMessage());
         }
+
+        return productList;
 
     }
 
@@ -225,8 +245,11 @@ public class DatabaseQueries {
 
     }
 
-    public void selectAllPayments(){
+    public List<Payment> selectAllPayments(){
         String sql = "SELECT * FROM payments";
+
+
+        List<Payment> paymentList = new ArrayList<Payment>();
 
         try(    Connection connection = connect();
                 PreparedStatement ps = connection.prepareStatement(sql))
@@ -236,14 +259,16 @@ public class DatabaseQueries {
 
             while(rs.next())
             {
-                System.out.println(
-                        rs.getInt("paymentID") + "\t" +
-                                rs.getString("timeStamp") + "\t" +
-                                rs.getInt("workerID")+ "\t" +
-                                rs.getString("submissionList")+ "\t" +
-                                rs.getInt("totalSubmissions")+ "\t" +
-                                rs.getDouble("amountPaid")
-                );
+                int paymentID = rs.getInt("paymentID");
+                String timeStamp = rs.getString("timeStamp");
+                int workerID = rs.getInt("workerID");
+                String submissionList = rs.getString("submissionList");
+                int totalSubmissions = rs.getInt("totalSubmissions");
+                double amountPaid = rs.getDouble("amountPaid");
+
+                Payment payment = new Payment(paymentID,timeStamp,workerID,submissionList,totalSubmissions,amountPaid);
+
+                paymentList.add(payment);
 
             }
 
@@ -254,12 +279,16 @@ public class DatabaseQueries {
         }
 
 
+        return paymentList;
+
     }
 
-    public void selectEmployeeByName(String eName)
+    public List<Employee> selectEmployeeByName(String eName)
     {
         String sql = "SELECT * FROM workers"+
                      " WHERE name=?";
+
+        List<Employee> employeeList = new ArrayList<Employee>();
 
         try(    Connection connection = connect();
                 PreparedStatement ps = connection.prepareStatement(sql))
@@ -269,16 +298,19 @@ public class DatabaseQueries {
             ps.setString(1,eName);
             ResultSet rs = ps.executeQuery();
 
+
             while(rs.next())
             {
-                System.out.println(
-                        rs.getInt("workerID")+ "\t" +
-                                rs.getString("name")+ "\t" +
-                                rs.getString("phoneNo")+ "\t" +
-                                rs.getString("address")+ "\t" +
-                                rs.getInt("nid")+ "\t" +
-                                rs.getInt("submissionNo")
-                );
+
+                        int id = rs.getInt("workerID");
+                        String name = rs.getString("name");
+                        String phone = rs.getString("phoneNo");
+                        String address = rs.getString("address");
+                        int nid = rs.getInt("nid");
+                        int submissionNo = rs.getInt("submissionNo");
+
+                        Employee aEmployee = new Employee(id,name,phone,address,nid,submissionNo);
+                        employeeList.add(aEmployee);
 
             }
 
@@ -287,12 +319,17 @@ public class DatabaseQueries {
         {
             System.out.println(e.getMessage());
         }
+
+        return employeeList;
     }
 
-    public void selectEmployeeByID(int eID)
+    public Employee selectEmployeeByID(int eID)
     {
+
         String sql = "SELECT * FROM workers"+
                 " WHERE workerID=?";
+
+        Employee aEmployee = null;
 
         try(    Connection connection = connect();
                 PreparedStatement ps = connection.prepareStatement(sql))
@@ -304,14 +341,15 @@ public class DatabaseQueries {
 
             while(rs.next())
             {
-                System.out.println(
-                        rs.getInt("workerID")+ "\t" +
-                                rs.getString("name")+ "\t" +
-                                rs.getString("phoneNo")+ "\t" +
-                                rs.getString("address")+ "\t" +
-                                rs.getInt("nid")+ "\t" +
-                                rs.getInt("submissionNo")
-                );
+                int id = rs.getInt("workerID");
+                String name = rs.getString("name");
+                String phone = rs.getString("phoneNo");
+                String address = rs.getString("address");
+                int nid = rs.getInt("nid");
+                int submissionNo = rs.getInt("submissionNo");
+
+                aEmployee = new Employee(id,name,phone,address,nid,submissionNo);
+
 
             }
 
@@ -320,11 +358,15 @@ public class DatabaseQueries {
         {
             System.out.println(e.getMessage());
         }
+
+        return aEmployee;
     }
 
-    public void selectProductByName(String pName){
+    public List<Product> selectProductByName(String pName){
         String sql = "SELECT * FROM products"+
                      " WHERE name=?";
+
+        List<Product> productList = new ArrayList<Product>();
 
         try(    Connection connection = connect();
                 PreparedStatement ps = connection.prepareStatement(sql))
@@ -335,15 +377,17 @@ public class DatabaseQueries {
 
             while(rs.next())
             {
-                System.out.println(
-                        rs.getInt("productID") + "\t" +
-                                rs.getString("name") + "\t" +
-                                rs.getDouble("rate")+ "\t" +
-                                rs.getString("color")+ "\t" +
-                                rs.getString("size")+ "\t" +
-                                rs.getString("rattler")+ "\t" +
-                                rs.getString("notes")
-                );
+
+                int id = rs.getInt("productID");
+                String name = rs.getString("name");
+                double rate = rs.getDouble("rate");
+                String color = rs.getString("color");
+                String size = rs.getString("size");
+                String rattler = rs.getString("rattler");
+                String notes = rs.getString("notes");
+
+                Product product = new Product(id,name,rate,color,size,rattler,notes);
+                productList.add(product);
 
             }
 
@@ -352,12 +396,16 @@ public class DatabaseQueries {
         {
             System.out.println(e.getMessage());
         }
+
+        return productList;
     }
 
-    public void selectProductByID(int pID)
+    public Product selectProductByID(int pID)
     {
         String sql = "SELECT * FROM products"+
                 " WHERE productID=?";
+
+        Product product = null;
 
         try(    Connection connection = connect();
                 PreparedStatement ps = connection.prepareStatement(sql))
@@ -368,15 +416,16 @@ public class DatabaseQueries {
 
             while(rs.next())
             {
-                System.out.println(
-                        rs.getInt("productID") + "\t" +
-                                rs.getString("name") + "\t" +
-                                rs.getDouble("rate")+ "\t" +
-                                rs.getString("color")+ "\t" +
-                                rs.getString("size")+ "\t" +
-                                rs.getString("rattler")+ "\t" +
-                                rs.getString("notes")
-                );
+                int id = rs.getInt("productID");
+                String name = rs.getString("name");
+                double rate = rs.getDouble("rate");
+                String color = rs.getString("color");
+                String size = rs.getString("size");
+                String rattler = rs.getString("rattler");
+                String notes = rs.getString("notes");
+
+                product = new Product(id,name,rate,color,size,rattler,notes);
+
 
             }
 
@@ -385,12 +434,16 @@ public class DatabaseQueries {
         {
             System.out.println(e.getMessage());
         }
+
+        return product;
     }
 
-    public void getPaymentReportByEmployeeID(int eID)
+    public List<Payment> getPaymentByEmployeeID(int eID)
     {
         String sql = "SELECT * FROM payments"+
                      " WHERE workerID=?";
+
+        List<Payment> paymentList = new ArrayList<Payment>();
 
         try(    Connection connection = connect();
                 PreparedStatement ps = connection.prepareStatement(sql))
@@ -401,14 +454,17 @@ public class DatabaseQueries {
 
             while(rs.next())
             {
-                System.out.println(
-                        rs.getInt("paymentID") + "\t" +
-                                rs.getString("timeStamp") + "\t" +
-                                rs.getInt("workerID")+ "\t" +
-                                rs.getString("submissionList")+ "\t" +
-                                rs.getInt("totalSubmissions")+ "\t" +
-                                rs.getDouble("amountPaid")
-                );
+
+                        int paymentID = rs.getInt("paymentID");
+                        String timeStamp = rs.getString("timeStamp");
+                        int workerID = rs.getInt("workerID");
+                        String submissionList = rs.getString("submissionList");
+                        int totalSubmissions = rs.getInt("totalSubmissions");
+                        double amountPaid = rs.getDouble("amountPaid");
+
+                        Payment payment = new Payment(paymentID,timeStamp,workerID,submissionList,totalSubmissions,amountPaid);
+
+                        paymentList.add(payment);
 
             }
 
@@ -417,12 +473,18 @@ public class DatabaseQueries {
         {
             System.out.println(e.getMessage());
         }
+
+        return paymentList;
     }
 
-    public void getCurrentSubmissions(int eID)
+    public List<Submission> getCurrentSubmissions(int eID)
     {
-        String sql = "SELECT * FROM submissions"+
+        String sql = "SELECT * FROM submissions" +
+                     " INNER JOIN products" +
+                     " On submissions.productID = products.productID" +
                      " WHERE workerID=? AND paid=?";
+
+        List<Submission> submissionList = new ArrayList<>();
 
         try(    Connection connection = connect();
                 PreparedStatement ps = connection.prepareStatement(sql))
@@ -434,14 +496,20 @@ public class DatabaseQueries {
 
             while(rs.next())
             {
-                System.out.println(
-                        rs.getInt("submissionID") + "\t" +
-                                rs.getString("submitTime") + "\t" +
-                                rs.getInt("workerID")+ "\t" +
-                                rs.getInt("productID")+ "\t" +
-                                rs.getInt("productNo")+ "\t" +
-                                rs.getString("paid")
-                );
+
+                        int id = rs.getInt("submissionID");
+                        String time = rs.getString("submitTime");
+                        int workerID = rs.getInt("workerID");
+                        int productID = rs.getInt("productID");
+                        int productNo =rs.getInt("productNo");
+                        String paid = rs.getString("paid");
+
+                        String productName = rs.getString("name");
+                        String size = rs.getString("size");
+                        double rate = rs.getDouble("rate");
+
+                        Submission submission = new Submission(id,time,workerID,productID,productNo,paid,productName,size,rate);
+                        submissionList.add(submission);
 
             }
 
@@ -450,12 +518,66 @@ public class DatabaseQueries {
         {
             System.out.println(e.getMessage());
         }
+
+        return submissionList;
     }
 
-    public void getSubmissionBySubmissionID(int sID)
+
+    public List<Submission> getUnpaidSubmissionsOfSameProductsForEmployee(int eID, int pID)
+    {
+        String sql = "SELECT * FROM submissions" +
+                " INNER JOIN products" +
+                " On submissions.productID = products.productID" +
+                " WHERE workerID=? AND paid=? AND submissions.productID = ?";
+
+        List<Submission> submissionList = new ArrayList<>();
+
+        try(    Connection connection = connect();
+                PreparedStatement ps = connection.prepareStatement(sql))
+        {
+
+            ps.setInt(1,eID);
+            ps.setString(2,"N");
+            ps.setInt(3,pID);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next())
+            {
+
+                int id = rs.getInt("submissionID");
+                String time = rs.getString("submitTime");
+                int workerID = rs.getInt("workerID");
+                int productID = rs.getInt("productID");
+                int productNo =rs.getInt("productNo");
+                String paid = rs.getString("paid");
+
+                String productName = rs.getString("name");
+                String size = rs.getString("size");
+                double rate = rs.getDouble("rate");
+
+                Submission submission = new Submission(id,time,workerID,productID,productNo,paid,productName,size,rate);
+                submissionList.add(submission);
+
+            }
+
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        return submissionList;
+    }
+
+
+    public Submission getSubmissionBySubmissionID(int sID)
     {
         String sql = "SELECT * FROM submissions"+
+                " INNER JOIN products"+
+                " ON submissions.productID = products.productID"+
                 " WHERE submissionID=?";
+
+        Submission submission = null;
 
         try(    Connection connection = connect();
                 PreparedStatement ps = connection.prepareStatement(sql))
@@ -466,14 +588,18 @@ public class DatabaseQueries {
 
             while(rs.next())
             {
-                System.out.println(
-                        rs.getInt("submissionID") + "\t" +
-                                rs.getString("submitTime") + "\t" +
-                                rs.getInt("workerID")+ "\t" +
-                                rs.getInt("productID")+ "\t" +
-                                rs.getInt("productNo")+ "\t" +
-                                rs.getString("paid")
-                );
+                int id = rs.getInt("submissionID");
+                String time = rs.getString("submitTime");
+                int workerID = rs.getInt("workerID");
+                int productID = rs.getInt("productID");
+                int productNo =rs.getInt("productNo");
+                String paid = rs.getString("paid");
+
+                String productName = rs.getString("name");
+                String size = rs.getString("size");
+                double rate = rs.getDouble("rate");
+
+                submission = new Submission(id,time,workerID,productID,productNo,paid,productName,size,rate);
 
             }
 
@@ -482,7 +608,98 @@ public class DatabaseQueries {
         {
             System.out.println(e.getMessage());
         }
+
+        return submission;
     }
+
+
+    public List<Submission> getSubmissionByDate(int eID,String date)
+    {
+        String sql = "SELECT * FROM submissions"+
+                " INNER JOIN products"+
+                " ON submissions.productID = products.productID"+
+                " WHERE workerID=? AND submitTime = ?";
+
+        List<Submission> submissionList = new ArrayList<>();
+
+        try(    Connection connection = connect();
+                PreparedStatement ps = connection.prepareStatement(sql))
+        {
+
+            ps.setInt(1,eID);
+            ps.setString(2,date);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next())
+            {
+                int id = rs.getInt("submissionID");
+                String time = rs.getString("submitTime");
+                int workerID = rs.getInt("workerID");
+                int productID = rs.getInt("productID");
+                int productNo =rs.getInt("productNo");
+                String paid = rs.getString("paid");
+
+                String productName = rs.getString("name");
+                String size = rs.getString("size");
+                double rate = rs.getDouble("rate");
+
+                Submission submission = new Submission(id,time,workerID,productID,productNo,paid,productName,size,rate);
+                submissionList.add(submission);
+
+            }
+
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        return submissionList;
+    }
+
+
+    public List<Submission> getSubmissionByEmployeeID(int eID)
+    {
+        String sql = "SELECT * FROM submissions"+
+                " INNER JOIN products" +
+                " On submissions.productID = products.productID"+
+                " WHERE workerID = ?";
+
+        List<Submission> submissionList = new ArrayList<>();
+
+        try(    Connection connection = connect();
+                PreparedStatement ps = connection.prepareStatement(sql))
+        {
+
+            ps.setInt(1,eID);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next())
+            {
+                int id = rs.getInt("submissionID");
+                String time = rs.getString("submitTime");
+                int workerID = rs.getInt("workerID");
+                int productID = rs.getInt("productID");
+                int productNo =rs.getInt("productNo");
+                String paid = rs.getString("paid");
+                String productName = rs.getString("name");
+                String size = rs.getString("size");
+                double rate = rs.getDouble("rate");
+
+                Submission submission = new Submission(id,time,workerID,productID,productNo,paid,productName,size,rate);
+                submissionList.add(submission);
+
+            }
+
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        return submissionList;
+    }
+
 
     public void paySubmission(int sID){
         String sql = "UPDATE submissions SET paid = ?"

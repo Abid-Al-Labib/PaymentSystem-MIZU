@@ -5,58 +5,70 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="437.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.MainController">
+<AnchorPane prefHeight="437.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.WorkerProfileController">
    <children>
-      <Label layoutX="50.0" layoutY="133.0" text="Employee ID:">
+      <Label layoutX="46.0" layoutY="123.0" text="Employee ID">
          <font>
-            <Font size="14.0" />
+            <Font size="13.0" />
          </font>
       </Label>
       <Label layoutX="50.0" layoutY="90.0" text="Full Name:">
          <font>
-            <Font size="14.0" />
+            <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="177.0" text="Phone Number:">
+      <Label layoutX="48.0" layoutY="179.0" text="Phone Number:">
          <font>
-            <Font size="14.0" />
+            <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="219.0" text="Current Submissions: ">
+      <Label layoutX="49.0" layoutY="245.0" text="Current Submissions: ">
          <font>
-            <Font size="14.0" />
+            <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="134.0" layoutY="91.0" text="Label">
+      <Label fx:id="nameLabel" layoutX="134.0" layoutY="91.0" text="Label">
          <font>
-            <Font size="14.0" />
+            <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="148.0" layoutY="133.0" text="Label">
+      <Label fx:id="idLabel" layoutX="134.0" layoutY="123.0" text="Label">
          <font>
-            <Font size="14.0" />
+            <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="170.0" layoutY="179.0" text="Label">
+      <Label fx:id="phoneLabel" layoutX="158.0" layoutY="179.0" text="Label">
          <font>
-            <Font size="14.0" />
+            <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="198.0" layoutY="221.0" text="Label">
+      <Label fx:id="csLabel" layoutX="184.0" layoutY="245.0" text="Label">
          <font>
-            <Font size="14.0" />
+            <Font size="13.0" />
          </font>
       </Label>
-      <Button layoutX="50.0" layoutY="261.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="New Submission" />
-      <Button layoutX="50.0" layoutY="304.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Make Payment" />
-      <Button layoutX="50.0" layoutY="346.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Payment Report" />
-      <Button layoutX="234.0" layoutY="381.0" mnemonicParsing="false" text="Done" />
-      <Label layoutX="184.0" layoutY="28.0" text=" Employee Profile " underline="true">
+      <Button layoutX="50.0" layoutY="292.0" mnemonicParsing="false" onAction="#newSubmissionButtonPressed" prefHeight="26.0" prefWidth="114.0" text="New Submission" />
+      <Button layoutX="50.0" layoutY="335.0" mnemonicParsing="false" onAction="#makePaymentButtonPressed" prefHeight="26.0" prefWidth="114.0" text="Make Payment" />
+      <Button layoutX="193.0" layoutY="335.0" mnemonicParsing="false" onAction="#paymentReportButtonPressed" prefHeight="26.0" prefWidth="114.0" text="Payment Report" />
+      <Button fx:id="doneButton" layoutX="234.0" layoutY="388.0" mnemonicParsing="false" onAction="#doneButtonPressed" text="Done" />
+      <Label layoutX="184.0" layoutY="28.0" text="Employee Profile" underline="true">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="257.0" layoutY="216.0" mnemonicParsing="false" text="View " />
+      <Button layoutX="262.0" layoutY="242.0" mnemonicParsing="false" onAction="#viewCurrentSubmissionButtonPressed" text="View " />
+      <Button layoutX="190.0" layoutY="293.0" mnemonicParsing="false" onAction="#viewSubmissionButtonPressed" prefHeight="26.0" prefWidth="114.0" text="View Submission" />
+      <Label layoutX="49.0" layoutY="212.0" text="NID : ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="nidLabel" layoutX="93.0" layoutY="212.0" text="Label">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="46.0" layoutY="154.0" text="Address:" />
+      <Label fx:id="addressLabel" layoutX="109.0" layoutY="154.0" text="Label" />
    </children>
 </AnchorPane>

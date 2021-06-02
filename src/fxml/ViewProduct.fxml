@@ -7,24 +7,25 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="327.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.MainController">
+<AnchorPane prefHeight="327.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.ViewProductController">
    <children>
       <Label layoutX="38.0" layoutY="27.0" text="Search product:" />
-      <TextField layoutX="138.0" layoutY="23.0" prefHeight="18.0" prefWidth="382.0" promptText="Search by name" />
-      <TextField layoutX="564.0" layoutY="23.0" promptText="Search by ID" />
-      <TableView layoutX="26.0" layoutY="70.0" prefHeight="200.0" prefWidth="782.0">
+      <TextField fx:id="nameField" layoutX="138.0" layoutY="23.0" prefHeight="18.0" prefWidth="382.0" promptText="Search by name" />
+      <TextField fx:id="idField" layoutX="564.0" layoutY="23.0" promptText="Search by ID" />
+      <TableView fx:id="productTable" layoutX="26.0" layoutY="70.0" prefHeight="200.0" prefWidth="782.0">
         <columns>
-          <TableColumn prefWidth="125.60000991821289" text="Name" />
-          <TableColumn prefWidth="90.39999389648438" text="ID" />
-            <TableColumn prefWidth="72.00006103515625" text="Rate" />
-            <TableColumn prefWidth="84.00006103515625" text="Color" />
+          <TableColumn fx:id="nameColumn" prefWidth="125.60000991821289" text="Name" />
+          <TableColumn fx:id="idColumn" prefWidth="90.39999389648438" text="ID" />
+            <TableColumn fx:id="rateColumn" prefWidth="72.00006103515625" text="Rate" />
+            <TableColumn fx:id="colorColumn" prefWidth="84.00006103515625" text="Color" />
             <TableColumn minWidth="0.0" prefWidth="0.0" text="Rattler" />
-            <TableColumn prefWidth="40.7999267578125" text="Size" />
-            <TableColumn prefWidth="144.00006103515625" text="Rattler" />
-            <TableColumn prefWidth="222.39999999999998" text="Notes" />
+            <TableColumn fx:id="sizeColumn" prefWidth="40.7999267578125" text="Size" />
+            <TableColumn fx:id="rattlerColumn" prefWidth="144.00006103515625" text="Rattler" />
+            <TableColumn fx:id="notesColumn" prefWidth="222.39999999999998" text="Notes" />
         </columns>
       </TableView>
-      <Button layoutX="749.0" layoutY="286.0" mnemonicParsing="false" text="Done" />
+      <Button fx:id="doneButton" layoutX="749.0" layoutY="286.0" mnemonicParsing="false" onAction="#doneButtonPressed" text="Done" />
+      <Button layoutX="691.0" layoutY="286.0" mnemonicParsing="false" onAction="#resetButtonPressed" text="Reset" />
+      <Button layoutX="627.0" layoutY="286.0" mnemonicParsing="false" onAction="#searchButtonPressed" text="Search" />
    </children>
 </AnchorPane>

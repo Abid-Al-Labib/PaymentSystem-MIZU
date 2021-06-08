@@ -2,26 +2,17 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="416.0" prefWidth="294.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Controller">
+<AnchorPane prefHeight="542.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.MakePaymentController">
    <children>
-      <Button layoutX="157.0" layoutY="377.0" mnemonicParsing="false" text="Confirm" />
-      <Button layoutX="228.0" layoutY="377.0" mnemonicParsing="false" text="Cancel" />
-      <Label layoutX="36.0" layoutY="42.0" text="Payment ID:" />
-      <Label layoutX="36.0" layoutY="79.0" text="Date:" />
-      <Label layoutX="36.0" layoutY="117.0" text="Employee Name:" />
-      <Label layoutX="36.0" layoutY="161.0" text="Employee ID:" />
-      <Label layoutX="36.0" layoutY="208.0" text="Submission list:" />
-      <Label layoutX="36.0" layoutY="252.0" text="Total Submissions:" />
-      <Label layoutX="36.0" layoutY="291.0" text="Amount:" />
-      <Label layoutX="104.0" layoutY="42.0" text="Label" />
-      <Label layoutX="71.0" layoutY="79.0" text="Label" />
-      <Label layoutX="133.0" layoutY="117.0" text="Label" />
-      <Label layoutX="112.0" layoutY="161.0" text="Label" />
-      <Label layoutX="120.0" layoutY="208.0" text="Label" />
-      <Label layoutX="143.0" layoutY="252.0" text="Label" />
-      <Label layoutX="85.0" layoutY="291.0" text="Label" />
+      <Button layoutX="178.0" layoutY="502.0" mnemonicParsing="false" onAction="#confirmButtonPressed" text="Confirm" />
+      <Button fx:id="cancelButton" layoutX="248.0" layoutY="502.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Done" />
+      <Label layoutX="36.0" layoutY="14.0" text="Date:" />
+      <Label layoutX="36.0" layoutY="38.0" text="Employee Name:" />
+      <Label fx:id="dateLabel" layoutX="67.0" layoutY="14.0" text="Label" />
+      <Label fx:id="nameLabel" layoutX="137.0" layoutY="38.0" text="Label" />
+      <TextArea fx:id="textArea" layoutX="14.0" layoutY="61.0" prefHeight="434.0" prefWidth="454.0" />
    </children>
 </AnchorPane>

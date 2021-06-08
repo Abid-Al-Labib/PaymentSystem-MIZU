@@ -48,17 +48,17 @@ public class ViewWorkerController implements Initializable {
 
 
 
-        if(!(nameField.getText().isEmpty()) || !(idField.getText().isEmpty()))
+        if(!(nameField.getText().trim().isEmpty()) || !(idField.getText().trim().isEmpty()))
         {
-            if(!nameField.getText().isEmpty())
+            if(!nameField.getText().trim().isEmpty())
             {
-                employeeList = esp.getWorkerByName(nameField.getText().toString());
+                employeeList = esp.getWorkerByName(nameField.getText().trim().toString());
             }
             else
             {
 
                 employeeList = new ArrayList<Employee>();
-                Employee emp = esp.getWorkerById(Integer.parseInt(idField.getText().toString()));
+                Employee emp = esp.getWorkerById(Integer.parseInt(idField.getText().trim().toString()));
                 if(emp!=null)
                 {
                     employeeList.add(emp);

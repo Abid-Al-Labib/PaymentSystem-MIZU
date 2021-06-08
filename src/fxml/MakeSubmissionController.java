@@ -57,7 +57,7 @@ public class MakeSubmissionController {
         Product product = null;
 
 
-        if(quantityField.getText().isEmpty() || productIDField.getText().isEmpty())
+        if(quantityField.getText().trim().isEmpty() || productIDField.getText().trim().isEmpty())
         {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -73,7 +73,7 @@ public class MakeSubmissionController {
         else
         {
             ProductServiceProvider productServiceProvider = new ProductServiceProvider();
-            product = productServiceProvider.getProductsByID(Integer.parseInt(this.productIDField.getText()));
+            product = productServiceProvider.getProductsByID(Integer.parseInt(this.productIDField.getText().trim()));
 
             if(product==null)
             {
@@ -98,7 +98,7 @@ public class MakeSubmissionController {
                 if (result.get() == ButtonType.OK){
 
                     SubmissionServiceProvider submissionServiceProvider = new SubmissionServiceProvider();
-                    String insert  = submissionServiceProvider.makeSubmission(workerID,Integer.parseInt(productIDField.getText()), Integer.parseInt(quantityField.getText()));
+                    String insert  = submissionServiceProvider.makeSubmission(workerID,Integer.parseInt(productIDField.getText().trim()), Integer.parseInt(quantityField.getText().trim()));
 
                     int currentSubmission = submissionServiceProvider.calculateTotalSubmissionCount(workerID);
 

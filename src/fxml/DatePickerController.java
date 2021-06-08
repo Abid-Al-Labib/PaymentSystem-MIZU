@@ -35,7 +35,7 @@ public class DatePickerController {
     @FXML
     public void confirmButtonPressed(ActionEvent actionEvent)
     {
-        if((dayField.getText().toString().trim().isEmpty())||(monthField.getText().toString().trim().isEmpty())||(yearField.getText().toString().trim().isEmpty()))
+        if((dayField.getText().trim().isEmpty())||(monthField.getText().trim().isEmpty())||(yearField.getText().trim().isEmpty()))
         {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Incomplete Date");
@@ -47,7 +47,7 @@ public class DatePickerController {
         }
         else
         {
-            if(dayField.getText().toString().length()>2||monthField.getText().toString().length()>2||yearField.getText().toString().length()>4)
+            if(dayField.getText().trim().length()>2||monthField.getText().trim().length()>2||yearField.getText().trim().length()>4)
             {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Limit Exceeded");
@@ -58,16 +58,16 @@ public class DatePickerController {
             }
             else
             {
-                if(monthField.getText().toString().length()==2)
+                if(monthField.getText().trim().length()==2)
                 {
-                    String date = dayField.getText().toString().trim() + "-" + monthField.getText().toString().trim() + "-" + yearField.getText().toString().trim();
+                    String date = dayField.getText().trim() + "-" + monthField.getText().trim() + "-" + yearField.getText().trim();
                     vsc.setDateToBeSearched(date);
                     Stage stage = (Stage)cancelButton.getScene().getWindow();
                     stage.close();
                 }
                 else
                 {
-                    String date = dayField.getText().toString().trim() + "-" + "0" +monthField.getText().toString().trim() + "-" + yearField.getText().toString().trim();
+                    String date = dayField.getText().trim() + "-" + "0" +monthField.getText().trim() + "-" + yearField.getText().trim();
                     vsc.setDateToBeSearched(date);
                     Stage stage = (Stage)cancelButton.getScene().getWindow();
                     stage.close();

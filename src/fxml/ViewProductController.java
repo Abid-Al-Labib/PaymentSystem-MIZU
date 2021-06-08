@@ -98,17 +98,17 @@ public class ViewProductController implements Initializable {
 
 
 
-        if(!(nameField.getText().isEmpty()) || !(idField.getText().isEmpty()))
+        if(!(nameField.getText().trim().isEmpty()) || !(idField.getText().trim().isEmpty()))
         {
-            if(!nameField.getText().isEmpty())
+            if(!nameField.getText().trim().isEmpty())
             {
-                productList = productServiceProvider.getProductsByName(nameField.getText().toString());
+                productList = productServiceProvider.getProductsByName(nameField.getText().trim().toString());
             }
             else
             {
                 productList = new ArrayList<Product>();
                 Product product;
-                product = productServiceProvider.getProductsByID(Integer.parseInt(idField.getText().toString()));
+                product = productServiceProvider.getProductsByID(Integer.parseInt(idField.getText().trim().toString()));
 
                 if(product!=null)
                 {

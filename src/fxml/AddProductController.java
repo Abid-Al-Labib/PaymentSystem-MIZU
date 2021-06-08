@@ -40,7 +40,7 @@ public class AddProductController {
         String rattler;
         String notes;
 
-        if(nameField.getText().isEmpty() || rateField.getText().isEmpty() || sizeField.getText().isEmpty())
+        if(nameField.getText().trim().isEmpty() || rateField.getText().trim().isEmpty() || sizeField.getText().trim().isEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please fill out name, rate and size field.");
@@ -48,19 +48,19 @@ public class AddProductController {
         }
         else {
 
-            name = nameField.getText().toString();
-            rate = Double.parseDouble(rateField.getText().toString());
-            size = sizeField.getText().toString();
+            name = nameField.getText().trim().toString();
+            rate = Double.parseDouble(rateField.getText().trim().toString());
+            size = sizeField.getText().trim().toString();
 
         }
 
-        if(colorField.getText().isEmpty())
+        if(colorField.getText().trim().isEmpty())
         {
             color = "Color was not specified";
         }
         else
         {
-            color = colorField.getText().toString();
+            color = colorField.getText().trim().toString();
         }
 
 
@@ -74,13 +74,13 @@ public class AddProductController {
             rattler = "N";
         }
 
-        if(notesField.getText().isEmpty())
+        if(notesField.getText().trim().isEmpty())
         {
             notes = "N/A";
         }
         else
         {
-            notes = notesField.getText().toString();
+            notes = notesField.getText().trim().toString();
         }
 
         if(name!=null && size!=null && rate!= -1)

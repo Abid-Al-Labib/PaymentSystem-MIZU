@@ -28,40 +28,40 @@ public class AddWorkerController {
         int nid;
 
 
-        if(nameField.getText().isEmpty())
+        if(nameField.getText().trim().isEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Alert Message");
             alert.show();
         }
         else {
-            name = nameField.getText();
+            name = nameField.getText().trim();
         }
 
 
-        if(phoneField.getText().isEmpty()){
+        if(phoneField.getText().trim().isEmpty()){
             phoneNo = "N/A";
         }
         else{
-            phoneNo = phoneField.getText();
+            phoneNo = phoneField.getText().trim();
         }
 
 
-        if(addressField.getText().isEmpty())
+        if(addressField.getText().trim().isEmpty())
         {
             address = "N/A";
         }
         else{
-            address = addressField.getText();
+            address = addressField.getText().trim();
         }
 
 
-        if(nidField.getText().isEmpty())
+        if(nidField.getText().trim().isEmpty())
         {
             nid = -1;
         }
         else{
-            nid = Integer.parseInt(nidField.getText());
+            nid = Integer.parseInt(nidField.getText().trim());
         }
 
 

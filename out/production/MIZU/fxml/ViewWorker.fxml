@@ -7,20 +7,21 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="416.0" prefWidth="668.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Controller">
+<AnchorPane prefHeight="416.0" prefWidth="668.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.ViewWorkerController">
    <children>
-      <TableView layoutX="10.0" layoutY="117.0" prefHeight="238.0" prefWidth="648.0">
+      <Button fx:id="doneButton" layoutX="595.0" layoutY="371.0" mnemonicParsing="false" onAction="#doneButtonPresssed" text="Done" />
+      <Label layoutX="40.0" layoutY="21.0" text="Search Employee:" />
+      <TextField fx:id="nameField" layoutX="40.0" layoutY="46.0" prefHeight="26.0" prefWidth="398.0" promptText="Search by Name" />
+      <TextField fx:id="idField" layoutX="40.0" layoutY="82.0" promptText="Search by ID" />
+      <Button layoutX="456.0" layoutY="371.0" mnemonicParsing="false" onAction="#searchButtonPressed" text="Search" />
+      <TableView fx:id="employeeTable" layoutX="10.0" layoutY="117.0" prefHeight="238.0" prefWidth="648.0">
         <columns>
-          <TableColumn prefWidth="207.2000150680542" text="Employee Name" />
-          <TableColumn minWidth="0.0" prefWidth="91.99992370605469" text="Id" />
-            <TableColumn minWidth="0.0" prefWidth="192.800048828125" text="NID" />
-            <TableColumn prefWidth="158.4000244140625" text="Phone number" />
+          <TableColumn fx:id="nameColumn" prefWidth="207.2000150680542" text="Employee Name" />
+          <TableColumn fx:id="idColumn" minWidth="0.0" prefWidth="91.99992370605469" text="Id" />
+            <TableColumn fx:id="nidColumn" minWidth="0.0" prefWidth="192.800048828125" text="NID" />
+            <TableColumn fx:id="phoneColumn" prefWidth="158.4000244140625" text="Phone number" />
         </columns>
       </TableView>
-      <Button layoutX="595.0" layoutY="371.0" mnemonicParsing="false" text="Done" />
-      <Label layoutX="40.0" layoutY="21.0" text="Search Employee:" />
-      <TextField layoutX="40.0" layoutY="46.0" prefHeight="26.0" prefWidth="398.0" promptText="Search by Name" />
-      <TextField layoutX="40.0" layoutY="82.0" promptText="Search by ID" />
+      <Button layoutX="530.0" layoutY="371.0" mnemonicParsing="false" onAction="#resetButtonPressed" text="Reset" />
    </children>
 </AnchorPane>

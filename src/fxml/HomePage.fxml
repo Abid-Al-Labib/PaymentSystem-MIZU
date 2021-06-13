@@ -7,9 +7,9 @@
 
 <AnchorPane prefHeight="521.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.HomepageController">
    <children>
-      <Button fx:id="addEmployeeButton" layoutX="56.0" layoutY="393.0" mnemonicParsing="false" onAction="#addEmployeeButtonPressed" prefHeight="26.0" prefWidth="123.0" text="Add Employee" />
-      <Button layoutX="509.0" layoutY="393.0" mnemonicParsing="false" onAction="#employeeManagerButtonPressed" prefHeight="26.0" prefWidth="123.0" text="Employee Manager" />
-      <Button layoutX="283.0" layoutY="393.0" mnemonicParsing="false" onAction="#addProductButtonPressed" prefHeight="26.0" prefWidth="139.0" text="Add Product" />
+      <Button fx:id="addEmployeeButton" layoutX="56.0" layoutY="340.0" mnemonicParsing="false" onAction="#addEmployeeButtonPressed" prefHeight="26.0" prefWidth="123.0" text="Add Employee" />
+      <Button layoutX="497.0" layoutY="393.0" mnemonicParsing="false" onAction="#employeeManagerButtonPressed" prefHeight="26.0" prefWidth="158.0" text="Employee Manager" />
+      <Button layoutX="279.0" layoutY="340.0" mnemonicParsing="false" onAction="#addProductButtonPressed" prefHeight="26.0" prefWidth="139.0" text="Add Product" />
       <Button fx:id="viewEmployeeButton" layoutX="56.0" layoutY="451.0" mnemonicParsing="false" onAction="#viewEmployeeButtonPressed" prefHeight="26.0" prefWidth="123.0" text="View Employees" />
       <Button layoutX="283.0" layoutY="451.0" mnemonicParsing="false" onAction="#viewProductButtonPressed" prefHeight="26.0" prefWidth="139.0" text="View Product" />
       <Label alignment="CENTER" layoutX="217.0" layoutY="108.0" text="MIZU TOYS">
@@ -22,5 +22,7 @@
             <Font name="Calibri Light" size="24.0" />
          </font>
       </Label>
+      <Button layoutX="56.0" layoutY="393.0" mnemonicParsing="false" onAction="#editEmployeeButtonPressed" prefHeight="26.0" prefWidth="123.0" text="Edit Employee" />
+      <Button layoutX="282.0" layoutY="393.0" mnemonicParsing="false" onAction="#editProductButtonPressed" prefHeight="26.0" prefWidth="139.0" text="Edit Product" />
    </children>
 </AnchorPane>

@@ -54,4 +54,10 @@ public class EmployeeServiceProvider{
 
     }
 
+    public String editEmployee(int workerID,String name, String phoneNo, String address, int nid, int submissionNo)
+    {
+        String result = employeeDatabaseController.editEmployee(workerID,name,phoneNo,address,nid,submissionNo);
+        return result;
+    }
+
 }

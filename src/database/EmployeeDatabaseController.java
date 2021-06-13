@@ -57,7 +57,11 @@ public class EmployeeDatabaseController {
 
     }
 
-
+    public String editEmployee(int workerID,String name, String phoneNo, String address, int nid, int submissionNo)
+    {
+        String result = dbq.editEmployee(workerID,name,phoneNo,address,nid,submissionNo);
+        return result;
+    }
 
 
 }

@@ -737,5 +737,58 @@ public class DatabaseQueries {
             }
     }
 
+    public String editProduct(int productID,String name, double rate, String color, String size, String rattler, String notes)
+    {
+        String sql = "UPDATE products SET name = ?,rate = ?, color = ?, size = ?, rattler = ?, notes = ?"
+                + " WHERE productID = ?";
+
+        try(Connection connection = this.connect();
+            PreparedStatement ps = connection.prepareStatement(sql)){
+
+            ps.setString(1,name);
+            ps.setDouble(2,rate);
+            ps.setString(3,color);
+            ps.setString(4,size);
+            ps.setString(5,rattler);
+            ps.setString(6,notes);
+            ps.setInt(7,productID);
+            ps.executeUpdate();
+
+            return "Changes saved";
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+            return "Failed";
+        }
+
+    }
+
+    public String editEmployee(int workerID,String name, String phoneNo, String address, int nid, int submissionNo)
+    {
+        String sql = "UPDATE workers SET name = ?, phoneNo = ?, address = ?, nid = ?, submissionNo = ?"
+                + " WHERE workerID = ?";
+
+        try(Connection connection = this.connect();
+            PreparedStatement ps = connection.prepareStatement(sql)){
+
+            ps.setString(1,name);
+            ps.setString(2,phoneNo);
+            ps.setString(3,address);
+            ps.setInt(4,nid);
+            ps.setInt(5,submissionNo);
+            ps.setInt(6,workerID);
+
+            ps.executeUpdate();
+            return "Changes Saved";
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+            return "Failed";
+        }
+
+    }
+
 
 }

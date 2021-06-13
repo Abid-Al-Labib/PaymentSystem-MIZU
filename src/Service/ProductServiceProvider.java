@@ -45,7 +45,12 @@ public class ProductServiceProvider {
 
     }
 
+    public String editProduct(int productID,String name, double rate, String color, String size, String rattler, String notes)
+    {
 
+        String result = productDatabaseController.editProduct(productID, name,rate,color,size,rattler,notes);
+        return result;
+    }
 
 
 }

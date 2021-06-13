@@ -15,8 +15,12 @@ public class databaseTester {
     public static void main(String[] args) {
         DatabaseQueries dbq = new DatabaseQueries();
 
-//        dbq.addEmployee("FardinHOE","01736957623","Chittagong",69420,10);
-//        dbq.addProduct("puppy", 12.5,"brown","M","Y","cute one");
+//        String result = dbq.addEmployee("Esketit","01736957623","Dhaka",69420,10);
+        //String result = dbq.editEmployee(18,"Esketit","01736957623","Canada",69420,0);
+
+//        String result = dbq.addProduct("plane", 12.5,"brown","M","Y","cute one");
+        String result = dbq.editProduct(16,"Fighter plane", 12.5,"brown","M","Y","cute one");
+        System.out.println(result);
 //        dbq.addSubmission(1,1,20,"Y");
 //        dbq.addPayment(2,"2-6-5",60,2000);
 //
@@ -72,13 +76,13 @@ public class databaseTester {
 //        Payment payment = psp.getLastPaymentForEmployee();
 //        System.out.println(psp.generatePaymentReceiptForAPayment(payment));
 
-        List <Submission> submissions = dbq.getSubmissionByDate(12,"29-05-2021");
-        for(int i = 0; i < submissions.size();i++)
-        {
-
-            System.out.println(submissions.get(i).toStringREPORTFORMAT());
-
-        }
+//        List <Submission> submissions = dbq.getSubmissionByDate(12,"29-05-2021");
+//        for(int i = 0; i < submissions.size();i++)
+//        {
+//
+//            System.out.println(submissions.get(i).toStringREPORTFORMAT());
+//
+//        }
 
 
 
